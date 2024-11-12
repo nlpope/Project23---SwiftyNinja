@@ -10,6 +10,7 @@ import Foundation
 enum ImageKeys {
     static let sliceBackground  = "sliceBackground"
     static let sliceLife        = "sliceLife"
+    static let sliceBomb        = "sliceBomb"
     static let penguin          = "penguin"
 }
 
@@ -19,8 +20,16 @@ enum FontKeys {
 
 enum NameKeys {
     static let enemy            = "enemy"
+    static let bombContainer    = "bombContainer"
+    static let bomb             = "bomb"
 }
 
 enum SoundKeys {
     static let launch           = "launch.caf"
+    static let sliceBombFuse    =
+    "sliceBombFuse"
+}
+
+enum EmitterKeys {
+    static let sliceFuse        = "sliceFuse"
 }
