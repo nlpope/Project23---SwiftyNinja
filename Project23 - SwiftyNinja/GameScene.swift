@@ -17,7 +17,8 @@ enum ForceBomb {
     case never, always, random
 }
 
-class GameScene: SKScene {
+class GameScene: SKScene
+{
     
     var gameScore: SKLabelNode!
     var activeSliceBG: SKShapeNode!
@@ -39,7 +40,8 @@ class GameScene: SKScene {
     var chainDelay          = 3.0
     var nextSequenceQueued  = true
     
-    override func didMove(to view: SKView) {
+    override func didMove(to view: SKView)
+    {
         configureWorld()
         createScore()
         createLives()
@@ -48,7 +50,8 @@ class GameScene: SKScene {
     }
     
     
-    func configureWorld() {
+    func configureWorld()
+    {
         let background          = SKSpriteNode(imageNamed: ImageKeys.sliceBackground)
         background.position     = CGPoint(x: 512, y: 384)
         background.blendMode    = .replace
@@ -60,7 +63,8 @@ class GameScene: SKScene {
     }
     
     
-    func createScore() {
+    func createScore()
+    {
         gameScore                           = SKLabelNode(fontNamed: FontKeys.chalkduster)
         gameScore.horizontalAlignmentMode   = .left
         gameScore.fontSize                  = 48
@@ -71,7 +75,8 @@ class GameScene: SKScene {
     }
     
     
-    func createLives() {
+    func createLives()
+    {
         for i in 0 ..< 3 {
             let spriteNode  = SKSpriteNode(imageNamed: ImageKeys.sliceLife)
             spriteNode.position = CGPoint(x: CGFloat(834 + (i * 70)), y: 720)
@@ -82,7 +87,8 @@ class GameScene: SKScene {
     }
     
     
-    func createSlices() {
+    func createSlices()
+    {
         // track all players on the screen, recording an array of their swipe points
         
         activeSliceBG               = SKShapeNode()
@@ -103,9 +109,10 @@ class GameScene: SKScene {
     
     
     // initial forceBomb value in params can be overwritten. Blank cal '()' = .random
-    func createEnemy(forceBomb: ForceBomb = .random) {
+    func createEnemy(forceBomb: ForceBomb = .random)
+    {
         let enemy: SKSpriteNode
-        var enemyType   = Int.random(in: 0...6)
+        var enemyType                       = Int.random(in: 0...6)
         
         if forceBomb == .never { enemyType = 1 }
         else if forceBomb == .always { enemyType = 0 }
@@ -179,8 +186,9 @@ class GameScene: SKScene {
     }
     
     
-    func initiateSequence() {
-        sequence    = [.oneNoBomb, .oneNoBomb, .twoWithOneBomb, .twoWithOneBomb, .three, .one, .chain]
+    func initiateSequence()
+    {
+        sequence                = [.oneNoBomb, .oneNoBomb, .twoWithOneBomb, .twoWithOneBomb, .three, .one, .chain]
         
         for _ in 0 ... 1000 {
             // 'allCases' is why we made the enum conform to CaseIterable
@@ -188,13 +196,14 @@ class GameScene: SKScene {
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
-            guard let self = self else { return }
+            guard let self      = self else { return }
             self.tossEnemies()
         }
     }
     
     
-    func tossEnemies() {
+    func tossEnemies()
+    {
         popupTime *= 0.991
         chainDelay *= 0.99
         physicsWorld.speed *= 1.02
@@ -246,7 +255,8 @@ class GameScene: SKScene {
     }
     
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
+    {
         guard let touch     = touches.first else { return }
         // remove all existing points in the activeSlicePoints array
         activeSlicePoints.removeAll(keepingCapacity: true)
@@ -264,7 +274,8 @@ class GameScene: SKScene {
     }
     
     
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?)
+    {
         guard let touch     = touches.first else { return }
         let location        = touch.location(in: self)
         activeSlicePoints.append(location)
@@ -274,8 +285,9 @@ class GameScene: SKScene {
     }
     
     
-    func playSwooshSound() {
-        isSwooshSoundActive = true
+    func playSwooshSound()
+    {
+        isSwooshSoundActive                                         = true
         
         let randomNumber                                            = Int.random(in: 1...3)
         let soundName                                               = "swoosh\(randomNumber).caf"
@@ -286,7 +298,8 @@ class GameScene: SKScene {
     }
     
     
-    func redrawActiveSlice() {
+    func redrawActiveSlice()
+    {
         // if we have fewer than two points in our array = not enough data so clear the shapes and exit
         if activeSlicePoints.count < 2 {
             activeSliceBG.path  = nil
@@ -298,17 +311,36 @@ class GameScene: SKScene {
             activeSlicePoints.removeFirst(activeSlicePoints.count - 12)
         }
         // start line at the position of the 1st swipe pt, then go through the others drawing lines to each pt
-        let path    = UIBezierPath()
+        let path                = UIBezierPath()
         path.move(to: activeSlicePoints[0])
         
         for i in 1 ..< activeSlicePoints.count { path.addLine(to: activeSlicePoints[i]) }
         // update the slice shape paths so they get drawn using their designs (line width & color)
-        activeSliceBG.path  = path.cgPath
-        activeSliceFG.path  = path.cgPath
+        activeSliceBG.path      = path.cgPath
+        activeSliceFG.path      = path.cgPath
     }
     
     
-    override func update(_ currentTime: TimeInterval) {
+    override func update(_ currentTime: TimeInterval)
+    {
+        if activeEnemies.count > 0 {
+            for (index, node) in activeEnemies.enumerated().reversed() {
+                if node.position.y < -140 {
+                    node.removeFromParent()
+                    activeEnemies.remove(at: index)
+                }
+            }
+        } else {
+            if !nextSequenceQueued {
+                DispatchQueue.main.asyncAfter(deadline: .now() + popupTime) { [weak self] in
+                    guard let self = self else { return }
+                    self.tossEnemies()
+                }
+                
+                nextSequenceQueued = true
+            }
+        }
+        
         var bombCount       = 0
         
         for node in activeEnemies {
@@ -325,7 +357,8 @@ class GameScene: SKScene {
     }
     
     
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?)
+    {
         activeSliceBG.run(SKAction.fadeOut(withDuration: 0.25))
         activeSliceFG.run(SKAction.fadeOut(withDuration: 0.25))
     }
