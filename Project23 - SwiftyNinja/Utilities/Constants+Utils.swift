@@ -11,6 +11,7 @@ enum ImageKeys
 {
     static let sliceBackground  = "sliceBackground"
     static let sliceLife        = "sliceLife"
+    static let sliceLifeGone    = "sliceLifeGone"
     static let sliceBomb        = "sliceBomb"
     static let penguin          = "penguin"
 }
@@ -34,6 +35,7 @@ enum SoundKeys
     "sliceBombFuse.caf"
     static let whack            = "whack.caf"
     static let explosion        = "explosion.caf"
+    static let wrong            = "wrong.caf"
 }
 
 enum EmitterKeys

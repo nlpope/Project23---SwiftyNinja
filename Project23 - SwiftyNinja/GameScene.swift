@@ -23,22 +23,24 @@ class GameScene: SKScene
     var gameScore: SKLabelNode!
     var activeSliceBG: SKShapeNode!
     var activeSliceFG: SKShapeNode!
-    var score               = 0 {
-        didSet { gameScore.text = "Score: \(score)" }
-    }
-    
+    var isSwooshSoundActive = false
+    var bombSoundEffect: AVAudioPlayer?
     var activeSlicePoints   = [CGPoint]()
     var activeEnemies       = [SKSpriteNode]()
     var livesImages         = [SKSpriteNode]()
-    var lives               = 3
-    var isSwooshSoundActive = false
-    var bombSoundEffect: AVAudioPlayer?
-    
     var sequence            = [SequenceType]()
     var sequencePosition    = 0
     var popupTime           = 0.9
     var chainDelay          = 3.0
     var nextSequenceQueued  = true
+    var lives               = 5 {
+        didSet { if lives == 0 { endGame(triggeredByBomb: false) } }
+    }
+    var score               = 0 {
+        didSet { gameScore.text = "Score: \(score)" }
+    }
+    
+   
     
     override func didMove(to view: SKView)
     {
@@ -77,20 +79,38 @@ class GameScene: SKScene
     
     func createLives()
     {
-        for i in 0 ..< 3 {
-            let spriteNode  = SKSpriteNode(imageNamed: ImageKeys.sliceLife)
-            spriteNode.position = CGPoint(x: CGFloat(834 + (i * 70)), y: 720)
+        #warning("refactored OG func on pg 832")
+        var livesCopy           = lives
+        while livesCopy > 0 {
+            let spriteNode      = SKSpriteNode(imageNamed: ImageKeys.sliceLife)
+            //834
+            spriteNode.position = CGPoint(x: CGFloat(834 - (livesCopy * 70)), y: 720)
             addChild(spriteNode)
-            
             livesImages.append(spriteNode)
+            livesCopy -= 1
         }
+    }
+    
+    
+    func subtractLife()
+    {
+        // move to bottom? does it matter?
+        lives -= 1
+        run(SKAction.playSoundFileNamed(SoundKeys.wrong, waitForCompletion: false))
+        
+        var life: SKSpriteNode
+        #warning("refactored OG func on pg 875")
+        life            = livesImages.reversed()[lives]
+        life.texture    = SKTexture(imageNamed: ImageKeys.sliceLifeGone)
+        life.xScale     = 1.3
+        life.yScale     = 1.3
+        life.run(SKAction.scaleX(to: 1, duration: 0.1))
     }
     
     
     func createSlices()
     {
         // track all players on the screen, recording an array of their swipe points
-        
         activeSliceBG               = SKShapeNode()
         activeSliceBG.zPosition     = 2
         
@@ -310,12 +330,6 @@ class GameScene: SKScene
     }
     
     
-    func subtractLife()
-    {
-        
-    }
-    
-    
     func obliterate(node: SKSpriteNode, atIndex index: Int)
     {
         node.removeAllActions()
@@ -327,11 +341,12 @@ class GameScene: SKScene
     
     
     func endGame(triggeredByBomb: Bool)
-    {
-        
-    }
-    
-    
+    { print("GAME OVER") }
+}
+
+
+// MARK: SPRITE KIT DELEGATE FUNCTIONS
+extension GameScene {
     override func update(_ currentTime: TimeInterval)
     {
         if activeEnemies.count > 0 {
