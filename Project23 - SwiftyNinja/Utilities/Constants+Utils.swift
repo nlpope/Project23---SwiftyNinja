@@ -33,6 +33,7 @@ enum SoundKeys
     static let sliceBombFuse    =
     "sliceBombFuse.caf"
     static let whack            = "whack.caf"
+    static let explosion        = "explosion.caf"
 }
 
 enum EmitterKeys

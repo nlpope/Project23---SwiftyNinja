@@ -310,7 +310,23 @@ class GameScene: SKScene
     }
     
     
-    func endGame()
+    func subtractLife()
+    {
+        
+    }
+    
+    
+    func obliterate(node: SKSpriteNode, atIndex index: Int)
+    {
+        node.removeAllActions()
+        node.name   = ""
+        if node.name == NameKeys.enemy { subtractLife() }
+        node.removeFromParent()
+        activeEnemies.remove(at: index)
+    }
+    
+    
+    func endGame(triggeredByBomb: Bool)
     {
         
     }
@@ -319,23 +335,19 @@ class GameScene: SKScene
     override func update(_ currentTime: TimeInterval)
     {
         if activeEnemies.count > 0 {
-            for (index, node) in activeEnemies.enumerated().reversed() {
-                if node.position.y < -140 {
-                    node.removeFromParent()
-                    activeEnemies.remove(at: index)
-                }
-            }
+            #warning("refactored see pg 873 @ 1/2 screen for OG if problems arise")
+            for (index, node) in activeEnemies.enumerated().reversed() { if node.position.y < -140 { obliterate(node: node, atIndex: index) } }
         } else {
             if !nextSequenceQueued {
                 DispatchQueue.main.asyncAfter(deadline: .now() + popupTime) { [weak self] in
-                    guard let self = self else { return }
+                    guard let self  = self else { return }
                     self.tossEnemies()
                 }
-                nextSequenceQueued = true
+                nextSequenceQueued  = true
             }
         }
         
-        var bombCount       = 0
+        var bombCount               = 0
         
         for node in activeEnemies {
             if node.name == NameKeys.bombContainer {
@@ -346,7 +358,7 @@ class GameScene: SKScene
         
         if bombCount == 0 {
             bombSoundEffect?.stop()
-            bombSoundEffect = nil
+            bombSoundEffect         = nil
         }
     }
     
@@ -384,10 +396,7 @@ class GameScene: SKScene
                 
                 score += 1
                 
-                if let index            = activeEnemies.firstIndex(of: node) {
-                    activeEnemies.remove(at: index)
-                }
-                
+                if let index            = activeEnemies.firstIndex(of: node) { activeEnemies.remove(at: index) }
                 run(SKAction.playSoundFileNamed(SoundKeys.whack, waitForCompletion: false))
             }
             
@@ -407,6 +416,11 @@ class GameScene: SKScene
                 let group               = SKAction.group([scaleOut, fadeOut])
                 let seq                 = SKAction.sequence([group, .removeFromParent()])
                 bombContainer.run(seq)
+                
+                if let index            = activeEnemies.firstIndex(of: bombContainer) { activeEnemies.remove(at: index) }
+                
+                run(SKAction.playSoundFileNamed(SoundKeys.explosion, waitForCompletion: false))
+                endGame(triggeredByBomb: true)
             }
         }
     }
