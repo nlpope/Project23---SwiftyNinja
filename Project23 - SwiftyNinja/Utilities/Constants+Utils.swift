@@ -31,10 +31,13 @@ enum SoundKeys
 {
     static let launch           = "launch.caf"
     static let sliceBombFuse    =
-    "sliceBombFuse"
+    "sliceBombFuse.caf"
+    static let whack            = "whack.caf"
 }
 
 enum EmitterKeys
 {
     static let sliceFuse        = "sliceFuse"
+    static let sliceHitEnemy    = "sliceHitEnemy"
+    static let sliceHitBomb     = "sliceHitBomb"
 }
