@@ -33,13 +33,22 @@ class GameScene: SKScene {
     var isSwooshSoundActive = false
     var bombSoundEffect: AVAudioPlayer?
     
-    var popupTime           = 0.9
     var sequence            = [SequenceType]()
     var sequencePosition    = 0
+    var popupTime           = 0.9
     var chainDelay          = 3.0
     var nextSequenceQueued  = true
     
     override func didMove(to view: SKView) {
+        configureWorld()
+        createScore()
+        createLives()
+        createSlices()
+        initiateSequence()
+    }
+    
+    
+    func configureWorld() {
         let background          = SKSpriteNode(imageNamed: ImageKeys.sliceBackground)
         background.position     = CGPoint(x: 512, y: 384)
         background.blendMode    = .replace
@@ -48,10 +57,6 @@ class GameScene: SKScene {
         
         physicsWorld.gravity    = CGVector(dx: 0, dy: -6)
         physicsWorld.speed      = 0.85
-        
-        createScore()
-        createLives()
-        createSlices()
     }
     
     
@@ -97,11 +102,8 @@ class GameScene: SKScene {
     }
     
     
-    // can you override the initial forcBomb val in the definition?
+    // initial forceBomb value in params can be overwritten. Blank cal '()' = .random
     func createEnemy(forceBomb: ForceBomb = .random) {
-        // should enemy be penguin or bomb (force bomb, penguin or just be random)?
-        // where should it be created on screen?
-        // what direction is it moving?
         let enemy: SKSpriteNode
         var enemyType   = Int.random(in: 0...6)
         
@@ -177,6 +179,21 @@ class GameScene: SKScene {
     }
     
     
+    func initiateSequence() {
+        sequence    = [.oneNoBomb, .oneNoBomb, .twoWithOneBomb, .twoWithOneBomb, .three, .one, .chain]
+        
+        for _ in 0 ... 1000 {
+            // 'allCases' is why we made the enum conform to CaseIterable
+            if let nextSequence = SequenceType.allCases.randomElement() { sequence.append(nextSequence) }
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
+            guard let self = self else { return }
+            self.tossEnemies()
+        }
+    }
+    
+    
     func tossEnemies() {
         popupTime *= 0.991
         chainDelay *= 0.99
@@ -226,7 +243,6 @@ class GameScene: SKScene {
         
         sequencePosition += 1
         nextSequenceQueued  = false
-        #warning("stopped here")
     }
     
     
