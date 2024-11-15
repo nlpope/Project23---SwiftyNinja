@@ -9,13 +9,9 @@ import SpriteKit
 import GameplayKit
 import AVFoundation
 
-enum SequenceType: CaseIterable {
-    case oneNoBomb, one, twoWithOneBomb, two, three, four, chain, fastChain
-}
+enum SequenceType: CaseIterable { case oneNoBomb, one, twoWithOneBomb, two, three, four, chain, fastChain }
 
-enum ForceBomb {
-    case never, always, random
-}
+enum ForceBomb { case never, always, random }
 
 class GameScene: SKScene
 {
@@ -35,7 +31,8 @@ class GameScene: SKScene
     var nextSequenceQueued  = true
     var isSwooshSoundActive = false
     var isGameEnded         = false
-    var lives               = 15 {
+    var burnItAll           = false
+    var lives               = 3 {
         didSet { if lives == 0 { endGame(triggeredByBomb: false) } }
     }
     var score               = 0 {
@@ -96,7 +93,7 @@ class GameScene: SKScene
     {
         lives -= 1
         run(SKAction.playSoundFileNamed(SoundKeys.wrong, waitForCompletion: false))
-        if lives == 0 { endGame(triggeredByBomb: false)}
+        if lives == 0 && !burnItAll { endGame(triggeredByBomb: false)}
         
         var life: SKSpriteNode
         life            = livesImages.reversed()[lives]
@@ -105,6 +102,9 @@ class GameScene: SKScene
         life.yScale     = 1.3
         life.run(SKAction.scaleX(to: 1, duration: 0.1))
     }
+    
+    
+    func removeAllLives() { burnItAll = true; while lives > 0 { subtractLife() } }
     
     
     func createSlices()
@@ -132,7 +132,7 @@ class GameScene: SKScene
         for _ in 0 ..< 5 { enemyTypes.append(EnemyTypeKeys.penguin) }
         enemyTypes.append(EnemyTypeKeys.bomb)
         enemyTypes.append(EnemyTypeKeys.speedster)
-        defer { enemyTypes.removeAll(); print("emptied enemytypes = \(enemyTypes)") }
+        defer { enemyTypes.removeAll() }
         
         var enemyType                                                           = enemyTypes[Int.random(in: 0...6)]
         if forceBomb == .never { enemyType                                      = EnemyTypeKeys.penguin }
@@ -217,16 +217,8 @@ class GameScene: SKScene
     func initiateSequence()
     {
         sequence                = [.oneNoBomb, .oneNoBomb, .twoWithOneBomb, .twoWithOneBomb, .three, .one, .chain]
-        
-        for _ in 0 ... 1000 {
-            // 'allCases' is why we made the enum conform to CaseIterable
-            if let nextSequence = SequenceType.allCases.randomElement() { sequence.append(nextSequence) }
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
-            guard let self      = self else { return }
-            self.tossEnemies()
-        }
+        for _ in 0 ... 1000 { if let nextSequence = SequenceType.allCases.randomElement() { sequence.append(nextSequence) } }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in self?.tossEnemies() }
     }
     
     
@@ -333,17 +325,7 @@ class GameScene: SKScene
         bombSoundEffect?.stop()
         bombSoundEffect             = nil
         
-        if triggeredByBomb {
-            while lives >= 0 {
-                var life: SKSpriteNode
-                life            = livesImages.reversed()[lives]
-                life.texture    = SKTexture(imageNamed: ImageKeys.sliceLifeGone)
-                life.xScale     = 1.3
-                life.yScale     = 1.3
-                life.run(SKAction.scaleX(to: 1, duration: 0.1))
-                lives -= 1
-            }
-        }
+        if triggeredByBomb { removeAllLives() }
     }
 }
 
@@ -352,16 +334,16 @@ class GameScene: SKScene
 extension GameScene {
     override func update(_ currentTime: TimeInterval)
     {
-        if activeEnemies.count > 0 {
+        if activeEnemies.count > 0
+        {
             for (index, node) in activeEnemies
                 .enumerated()
                 .reversed() { if node.position.y < -140 { obliterate(node: node, atIndex: index) } }
-        } else {
+        }
+        else
+        {
             if !nextSequenceQueued {
-                DispatchQueue.main.asyncAfter(deadline: .now() + popupTime) { [weak self] in
-                    guard let self  = self else { return }
-                    self.tossEnemies()
-                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + popupTime) { [weak self] in self?.tossEnemies() }
                 nextSequenceQueued  = true
             }
         }

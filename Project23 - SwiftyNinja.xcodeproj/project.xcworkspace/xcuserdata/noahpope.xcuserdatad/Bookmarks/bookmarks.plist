@@ -12,13 +12,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>104</string>
+					<string>101</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>103</string>
+					<string>100</string>
 					<key>Timestamp</key>
-					<string>753397194.515134</string>
+					<string>753405873.405466</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -59,13 +59,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>356</string>
+					<string>339</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>355</string>
+					<string>338</string>
 					<key>Timestamp</key>
-					<string>753400741.102657</string>
+					<string>753405873.407429</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -84,13 +84,13 @@
 				<string>            for (index, node) in activeEnemies
 </string>
 				<key>leading</key>
-				<string>    {
-        if activeEnemies.count &gt; 0 {
+				<string>        if activeEnemies.count &gt; 0
+        {
 </string>
 				<key>trailing</key>
 				<string>                .enumerated()
                 .reversed() { if node.position.y &lt; -140 { obliterate(node: node, atIndex: index) } }
-        } else {
+        }
 </string>
 			</dict>
 			<key>title</key>
@@ -106,13 +106,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>102</string>
+					<string>99</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>101</string>
+					<string>98</string>
 					<key>Timestamp</key>
-					<string>753397194.515286</string>
+					<string>753405873.407547</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -153,13 +153,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>84</string>
+					<string>81</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>83</string>
+					<string>80</string>
 					<key>Timestamp</key>
-					<string>753397194.515323</string>
+					<string>753405873.407568</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -200,13 +200,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>300</string>
+					<string>292</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>299</string>
+					<string>291</string>
 					<key>Timestamp</key>
-					<string>753400741.102682</string>
+					<string>753405873.407609</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -247,13 +247,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>308</string>
+					<string>300</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>307</string>
+					<string>299</string>
 					<key>Timestamp</key>
-					<string>753400741.1025831</string>
+					<string>753405873.407482</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -294,13 +294,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>405</string>
+					<string>387</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>404</string>
+					<string>386</string>
 					<key>Timestamp</key>
-					<string>753400741.102544</string>
+					<string>753405873.407588</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -341,13 +341,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>385</string>
+					<string>367</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>384</string>
+					<string>366</string>
 					<key>Timestamp</key>
-					<string>753400741.102603</string>
+					<string>753405873.407649</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -397,7 +397,7 @@
 					<key>StartingLineNumber</key>
 					<string>129</string>
 					<key>Timestamp</key>
-					<string>753397194.513851</string>
+					<string>753405873.407629</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -438,13 +438,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>424</string>
+					<string>406</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>423</string>
+					<string>405</string>
 					<key>Timestamp</key>
-					<string>753400741.102638</string>
+					<string>753405873.40746</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -485,13 +485,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>425</string>
+					<string>407</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>424</string>
+					<string>406</string>
 					<key>Timestamp</key>
-					<string>753400741.102621</string>
+					<string>753405873.407504</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -521,6 +521,53 @@
 			</dict>
 			<key>title</key>
 			<string>action sequences run everything one at a time</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>220</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>219</string>
+					<key>Timestamp</key>
+					<string>753405873.4075249</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>Project23 - SwiftyNinja/GameScene.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>        for _ in 0 ... 1000 { if let nextSequence = SequenceType.allCases.randomElement() { sequence.append(nextSequence) } }
+</string>
+				<key>leading</key>
+				<string>    {
+        sequence                = [.oneNoBomb, .oneNoBomb, .twoWithOneBomb, .twoWithOneBomb, .three, .one, .chain]
+</string>
+				<key>trailing</key>
+				<string>        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in self?.tossEnemies() }
+    }
+    
+</string>
+			</dict>
+			<key>title</key>
+			<string>'allCases' is why we made the enum conform to CaseIterable</string>
 			<key>type</key>
 			<string>bookmark</string>
 		</dict>
