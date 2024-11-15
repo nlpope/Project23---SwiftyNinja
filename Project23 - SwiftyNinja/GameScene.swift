@@ -84,7 +84,7 @@ class GameScene: SKScene
         while livesCopy > 0 {
             let spriteNode      = SKSpriteNode(imageNamed: ImageKeys.sliceLife)
             //834
-            spriteNode.position = CGPoint(x: CGFloat(834 - (livesCopy * 70)), y: 720)
+            spriteNode.position = CGPoint(x: CGFloat(1024 - (livesCopy * 70)), y: 720)
             addChild(spriteNode)
             livesImages.append(spriteNode)
             livesCopy -= 1
@@ -94,7 +94,7 @@ class GameScene: SKScene
     
     func subtractLife()
     {
-        // move to bottom? does it matter?
+        print("subtractLife reached")
         lives -= 1
         run(SKAction.playSoundFileNamed(SoundKeys.wrong, waitForCompletion: false))
         
@@ -275,25 +275,6 @@ class GameScene: SKScene
     }
     
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
-    {
-        guard let touch     = touches.first else { return }
-        // remove all existing points in the activeSlicePoints array
-        activeSlicePoints.removeAll(keepingCapacity: true)
-        // get touch location and add it to the activeSlicePoints array
-        let location        = touch.location(in: self)
-        activeSlicePoints.append(location)
-        // call redrawActiveSlice() to clear the slice shapes
-        redrawActiveSlice()
-        // remove any actions currently attached to the slice shapes
-        activeSliceBG.removeAllActions()
-        activeSliceFG.removeAllActions()
-        // set both slice shapes to have alpha of 1 so they are fully visible
-        activeSliceBG.alpha = 1
-        activeSliceFG.alpha = 1
-    }
-    
-    
     func playSwooshSound()
     {
         isSwooshSoundActive                                         = true
@@ -332,9 +313,9 @@ class GameScene: SKScene
     
     func obliterate(node: SKSpriteNode, atIndex index: Int)
     {
+        if node.name == NameKeys.enemy { subtractLife() }
         node.removeAllActions()
         node.name   = ""
-        if node.name == NameKeys.enemy { subtractLife() }
         node.removeFromParent()
         activeEnemies.remove(at: index)
     }
@@ -349,6 +330,7 @@ class GameScene: SKScene
 extension GameScene {
     override func update(_ currentTime: TimeInterval)
     {
+        print(activeEnemies.count)
         if activeEnemies.count > 0 {
             #warning("refactored see pg 873 @ 1/2 screen for OG if problems arise")
             for (index, node) in activeEnemies.enumerated().reversed() { if node.position.y < -140 { obliterate(node: node, atIndex: index) } }
@@ -375,6 +357,25 @@ extension GameScene {
             bombSoundEffect?.stop()
             bombSoundEffect         = nil
         }
+    }
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
+    {
+        guard let touch     = touches.first else { return }
+        // remove all existing points in the activeSlicePoints array
+        activeSlicePoints.removeAll(keepingCapacity: true)
+        // get touch location and add it to the activeSlicePoints array
+        let location        = touch.location(in: self)
+        activeSlicePoints.append(location)
+        // call redrawActiveSlice() to clear the slice shapes
+        redrawActiveSlice()
+        // remove any actions currently attached to the slice shapes
+        activeSliceBG.removeAllActions()
+        activeSliceFG.removeAllActions()
+        // set both slice shapes to have alpha of 1 so they are fully visible
+        activeSliceBG.alpha = 1
+        activeSliceFG.alpha = 1
     }
     
     
