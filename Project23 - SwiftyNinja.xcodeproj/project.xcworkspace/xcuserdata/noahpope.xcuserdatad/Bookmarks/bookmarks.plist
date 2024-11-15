@@ -12,13 +12,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>105</string>
+					<string>104</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>104</string>
+					<string>103</string>
 					<key>Timestamp</key>
-					<string>753385475.949877</string>
+					<string>753397194.515134</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -48,6 +48,479 @@
 			</dict>
 			<key>title</key>
 			<string>whack-a-penguin animatic guide</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>356</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>355</string>
+					<key>Timestamp</key>
+					<string>753400741.102657</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>Project23 - SwiftyNinja/GameScene.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>            for (index, node) in activeEnemies
+</string>
+				<key>leading</key>
+				<string>    {
+        if activeEnemies.count &gt; 0 {
+</string>
+				<key>trailing</key>
+				<string>                .enumerated()
+                .reversed() { if node.position.y &lt; -140 { obliterate(node: node, atIndex: index) } }
+        } else {
+</string>
+			</dict>
+			<key>title</key>
+			<string>refactored: OG on pg 873</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>102</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>101</string>
+					<key>Timestamp</key>
+					<string>753397194.515286</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>Project23 - SwiftyNinja/GameScene.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>        life            = livesImages.reversed()[lives]
+</string>
+				<key>leading</key>
+				<string>        
+        var life: SKSpriteNode
+</string>
+				<key>trailing</key>
+				<string>        life.texture    = SKTexture(imageNamed: ImageKeys.sliceLifeGone)
+        life.xScale     = 1.3
+        life.yScale     = 1.3
+</string>
+			</dict>
+			<key>title</key>
+			<string>refactored: OG on pg 875</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>84</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>83</string>
+					<key>Timestamp</key>
+					<string>753397194.515323</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>Project23 - SwiftyNinja/GameScene.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>        var livesCopy           = lives
+</string>
+				<key>leading</key>
+				<string>    func createLives()
+    {
+</string>
+				<key>trailing</key>
+				<string>        while livesCopy &gt; 0 {
+            let spriteNode      = SKSpriteNode(imageNamed: ImageKeys.sliceLife)
+            spriteNode.position = CGPoint(x: CGFloat(1024 - (livesCopy * 70)), y: 720)
+</string>
+			</dict>
+			<key>title</key>
+			<string>refactored: OG on pg 832</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>300</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>299</string>
+					<key>Timestamp</key>
+					<string>753400741.102682</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>Project23 - SwiftyNinja/GameScene.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>    func redrawActiveSlice()
+</string>
+				<key>leading</key>
+				<string>    
+    
+</string>
+				<key>trailing</key>
+				<string>    {
+        if activeSlicePoints.count &lt; 2 {
+            activeSliceBG.path  = nil
+</string>
+			</dict>
+			<key>title</key>
+			<string>1. if we have fewer than two points in our array = not enough data so clear the shapes and exit | 2. more than 12 slice points = remove the oldest ones til we have at most 12 (keeps swipe shapes short) - use removeFirst() | 3.  start line at the position of the 1st swipe pt, then go through the others drawing lines to each pt | 4. update the slice shape paths so they get drawn using their designs (line width &amp; color)</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>308</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>307</string>
+					<key>Timestamp</key>
+					<string>753400741.1025831</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>Project23 - SwiftyNinja/GameScene.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>        let path                = UIBezierPath(); path.move(to: activeSlicePoints[0])
+</string>
+				<key>leading</key>
+				<string>        }
+        if activeSlicePoints.count &gt; 12 { activeSlicePoints.removeFirst(activeSlicePoints.count - 12) }
+</string>
+				<key>trailing</key>
+				<string>        
+        for i in 1 ..&lt; activeSlicePoints.count { path.addLine(to: activeSlicePoints[i]) }
+        activeSliceBG.path      = path.cgPath
+</string>
+			</dict>
+			<key>title</key>
+			<string>semicolon ; conjoining (statement glue)</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>405</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>404</string>
+					<key>Timestamp</key>
+					<string>753400741.102544</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>Project23 - SwiftyNinja/GameScene.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>        activeSlicePoints.append(location); redrawActiveSlice()
+</string>
+				<key>leading</key>
+				<string>        let location                    = touch.location(in: self)
+        
+</string>
+				<key>trailing</key>
+				<string>        
+        if !isSwooshSoundActive { playSwooshSound() }
+        let nodesAtPoint                = nodes(at: location)
+</string>
+			</dict>
+			<key>title</key>
+			<string>semicolon ; conjoining (statement glue)</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>385</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>384</string>
+					<key>Timestamp</key>
+					<string>753400741.102603</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>Project23 - SwiftyNinja/GameScene.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>    override func touchesBegan(_ touches: Set&lt;UITouch&gt;, with event: UIEvent?)
+</string>
+				<key>leading</key>
+				<string>    
+    
+</string>
+				<key>trailing</key>
+				<string>    {
+        guard let touch     = touches.first else { return }
+        activeSlicePoints.removeAll(keepingCapacity: true)
+</string>
+			</dict>
+			<key>title</key>
+			<string>1. remove all existing points in the activeSlicePoints array
+2. get touch location and add it to the activeSlicePoints array
+3. call redrawActiveSlice() to clear the slice shapes | 4. remove any actions currently attached to the slice shapes
+5. set both slice shapes to have alpha of 1 so they are fully visible</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>130</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>129</string>
+					<key>Timestamp</key>
+					<string>753397194.513851</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>Project23 - SwiftyNinja/GameScene.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>    func configureEnemy(forceBomb: ForceBomb = .random)
+</string>
+				<key>leading</key>
+				<string>    
+    
+</string>
+				<key>trailing</key>
+				<string>    {
+        for _ in 0 ..&lt; 5 { enemyTypes.append(EnemyTypeKeys.penguin) }
+        enemyTypes.append(EnemyTypeKeys.bomb)
+</string>
+			</dict>
+			<key>title</key>
+			<string>initial forceBomb value in params can be overwritten. Blank cal '()' = .random</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>424</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>423</string>
+					<key>Timestamp</key>
+					<string>753400741.102638</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>Project23 - SwiftyNinja/GameScene.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>                let group               = SKAction.group([scaleOut, fadeOut])
+</string>
+				<key>leading</key>
+				<string>                let scaleOut            = SKAction.scale(to: 0.001, duration: 0.2)
+                let fadeOut             = SKAction.fadeOut(withDuration: 0.2)
+</string>
+				<key>trailing</key>
+				<string>                let seq                 = SKAction.sequence([group, .removeFromParent()])
+                node.run(seq)
+                
+</string>
+			</dict>
+			<key>title</key>
+			<string>action groups run everything at once</string>
+			<key>type</key>
+			<string>bookmark</string>
+		</dict>
+		<dict>
+			<key>destination</key>
+			<dict>
+				<key>location-parameters</key>
+				<dict>
+					<key>EndingColumnNumber</key>
+					<string>0</string>
+					<key>EndingLineNumber</key>
+					<string>425</string>
+					<key>StartingColumnNumber</key>
+					<string>0</string>
+					<key>StartingLineNumber</key>
+					<string>424</string>
+					<key>Timestamp</key>
+					<string>753400741.102621</string>
+				</dict>
+				<key>rebasable-url</key>
+				<dict>
+					<key>base</key>
+					<string>workspace</string>
+					<key>payload</key>
+					<dict>
+						<key>relative-path</key>
+						<string>Project23 - SwiftyNinja/GameScene.swift</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>text-context</key>
+			<dict>
+				<key>focused</key>
+				<string>                let seq                 = SKAction.sequence([group, .removeFromParent()])
+</string>
+				<key>leading</key>
+				<string>                let fadeOut             = SKAction.fadeOut(withDuration: 0.2)
+                let group               = SKAction.group([scaleOut, fadeOut])
+</string>
+				<key>trailing</key>
+				<string>                node.run(seq)
+                
+                score += 1
+</string>
+			</dict>
+			<key>title</key>
+			<string>action sequences run everything one at a time</string>
 			<key>type</key>
 			<string>bookmark</string>
 		</dict>
