@@ -146,6 +146,7 @@ class GameScene: SKScene
     }
     
     
+    // MARK: ENEMY GENERATION
     func generateBomb()
     {
         enemy                                                                   = SKSpriteNode()
@@ -158,7 +159,9 @@ class GameScene: SKScene
         
         if bombSoundEffect != nil { bombSoundEffect?.stop(); bombSoundEffect    = nil }
         
-        if let path                                                             = Bundle.main.url( forResource: SoundKeys.sliceBombFuse, withExtension: ".caf")
+        if let path                                                             = Bundle.main.url(
+            forResource: SoundKeys.sliceBombFuse,
+            withExtension: ".caf")
         {
             if let sound                                                        = try? AVAudioPlayer(contentsOf: path) { bombSoundEffect = sound; sound.play() }
         }
@@ -181,7 +184,6 @@ class GameScene: SKScene
     
     func generateSpeedster() {
         enemy       = SKSpriteNode(imageNamed: ImageKeys.speedster)
-        #warning("replace sound key with lightning")
         run(SKAction.playSoundFileNamed(SoundKeys.launch, waitForCompletion: false))
         enemy.name  = NameKeys.speedster
     }
@@ -207,10 +209,16 @@ class GameScene: SKScene
                 
         let randomYVelocity                                                         = Int.random(in: 24...32)
                 
-        enemy.physicsBody                                                           = SKPhysicsBody(circleOfRadius: 64)
-        enemy.physicsBody?.velocity                                                 = CGVector(dx: randomXVelocity * 40, dy: randomYVelocity * 40)
-        enemy.physicsBody?.angularVelocity                                          = randomAngularVelocity
-        enemy.physicsBody?.collisionBitMask                                         = 0
+        if enemy.name == NameKeys.speedster {
+            enemy.physicsBody                                                       = SKPhysicsBody(circleOfRadius: 64)
+            enemy.physicsBody?.velocity                                             = CGVector(dx: randomXVelocity * 55, dy: randomYVelocity * 55)
+            enemy.physicsBody?.collisionBitMask                                     = 0
+        } else {
+            enemy.physicsBody                                                       = SKPhysicsBody(circleOfRadius: 64)
+            enemy.physicsBody?.velocity                                             = CGVector(dx: randomXVelocity * 40, dy: randomYVelocity * 40)
+            enemy.physicsBody?.angularVelocity                                      = randomAngularVelocity
+            enemy.physicsBody?.collisionBitMask                                     = 0
+        }
     }
     
     
@@ -391,7 +399,7 @@ extension GameScene {
         
         for case let node as SKSpriteNode in nodesAtPoint
         {
-            if node.name == NameKeys.penguin
+            if node.name == NameKeys.penguin || node.name == NameKeys.speedster
             {
                 if let emitter          = SKEmitterNode(fileNamed: EmitterKeys.sliceHitEnemy) {
                     emitter.position    = node.position
@@ -407,7 +415,7 @@ extension GameScene {
                 let seq                 = SKAction.sequence([group, .removeFromParent()])
                 node.run(seq)
                 
-                score += 1
+                score                   = node.name == NameKeys.penguin ? score + 1 : score + 3
                 
                 if let index            = activeEnemies.firstIndex(of: node) { activeEnemies.remove(at: index) }
                 run(SKAction.playSoundFileNamed(SoundKeys.whack, waitForCompletion: false))

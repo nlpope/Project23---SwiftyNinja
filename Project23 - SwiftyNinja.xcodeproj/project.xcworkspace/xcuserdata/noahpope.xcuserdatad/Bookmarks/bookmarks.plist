@@ -59,13 +59,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>339</string>
+					<string>347</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>338</string>
+					<string>346</string>
 					<key>Timestamp</key>
-					<string>753405873.407429</string>
+					<string>753461222.5591331</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -200,13 +200,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>292</string>
+					<string>300</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>291</string>
+					<string>299</string>
 					<key>Timestamp</key>
-					<string>753405873.407609</string>
+					<string>753461222.559021</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -247,13 +247,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>300</string>
+					<string>308</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>299</string>
+					<string>307</string>
 					<key>Timestamp</key>
-					<string>753405873.407482</string>
+					<string>753461222.559082</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -294,13 +294,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>387</string>
+					<string>395</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>386</string>
+					<string>394</string>
 					<key>Timestamp</key>
-					<string>753405873.407588</string>
+					<string>753461222.559182</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -341,13 +341,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>367</string>
+					<string>375</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>366</string>
+					<string>374</string>
 					<key>Timestamp</key>
-					<string>753405873.407649</string>
+					<string>753461222.559108</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -438,13 +438,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>406</string>
+					<string>414</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>405</string>
+					<string>413</string>
 					<key>Timestamp</key>
-					<string>753405873.40746</string>
+					<string>753461222.559158</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -485,13 +485,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>407</string>
+					<string>415</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>406</string>
+					<string>414</string>
 					<key>Timestamp</key>
-					<string>753405873.407504</string>
+					<string>753461222.5592279</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -516,7 +516,7 @@
 				<key>trailing</key>
 				<string>                node.run(seq)
                 
-                score += 1
+                score                   = node.name == NameKeys.penguin ? score + 1 : score + 3
 </string>
 			</dict>
 			<key>title</key>
@@ -532,13 +532,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>220</string>
+					<string>228</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>219</string>
+					<string>227</string>
 					<key>Timestamp</key>
-					<string>753405873.4075249</string>
+					<string>753461222.559204</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
