@@ -334,6 +334,18 @@ class GameScene: SKScene
         bombSoundEffect             = nil
         
         if triggeredByBomb { removeAllLives() }
+        
+        let gameOver            = SKSpriteNode(imageNamed: ImageKeys.gameOver)
+        gameOver.position       = CGPoint(x: 512, y: 384)
+        gameOver.zPosition      = 1
+        addChild(gameOver)
+            
+        let finalScore          = SKLabelNode(fontNamed: FontKeys.chalkduster)
+        finalScore.text         = "Final Score: \(score)"
+        finalScore.position     = CGPoint(x: 512, y: 200)
+        finalScore.fontSize     = 100
+        finalScore.zPosition    = 1
+        addChild(finalScore)
     }
 }
 

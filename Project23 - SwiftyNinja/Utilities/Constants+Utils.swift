@@ -15,6 +15,7 @@ enum ImageKeys
     static let bomb             = "bomb"
     static let penguin          = "penguin"
     static let speedster        = "speedster"
+    static let gameOver         = "gameOver"
 }
 
 enum FontKeys
