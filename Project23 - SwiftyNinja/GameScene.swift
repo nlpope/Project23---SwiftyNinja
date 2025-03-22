@@ -39,8 +39,6 @@ class GameScene: SKScene
         didSet { gameScore.text = "Score: \(score)" }
     }
     
-   
-    
     override func didMove(to view: SKView)
     {
         configureWorld()
@@ -134,9 +132,9 @@ class GameScene: SKScene
         enemyTypes.append(EnemyTypeKeys.speedster)
         defer { enemyTypes.removeAll() }
         
-        var enemyType                                                           = enemyTypes[Int.random(in: 0...6)]
-        if forceBomb == .never { enemyType                                      = EnemyTypeKeys.penguin }
-        else if forceBomb == .always { enemyType                                = EnemyTypeKeys.bomb }
+        var enemyType = enemyTypes[Int.random(in: 0...6)]
+        if forceBomb == .never { enemyType = EnemyTypeKeys.penguin }
+        else if forceBomb == .always { enemyType = EnemyTypeKeys.bomb }
         
         if enemyType == EnemyTypeKeys.bomb { generateBomb() }
         else if enemyType == EnemyTypeKeys.penguin { generatePenguin() }
@@ -149,26 +147,26 @@ class GameScene: SKScene
     // MARK: ENEMY GENERATION
     func generateBomb()
     {
-        enemy                                                                   = SKSpriteNode()
-        enemy.zPosition                                                         = 1
-        enemy.name                                                              = NameKeys.bombContainer
+        enemy           = SKSpriteNode()
+        enemy.zPosition = 1
+        enemy.name      = NameKeys.bombContainer
         
-        let bombImage                                                           = SKSpriteNode(imageNamed: ImageKeys.bomb)
-        bombImage.name                                                          = NameKeys.bomb
+        let bombImage   = SKSpriteNode(imageNamed: ImageKeys.bomb)
+        bombImage.name  = NameKeys.bomb
         enemy.addChild(bombImage)
         
-        if bombSoundEffect != nil { bombSoundEffect?.stop(); bombSoundEffect    = nil }
+        if bombSoundEffect != nil { bombSoundEffect?.stop(); bombSoundEffect = nil }
         
-        if let path                                                             = Bundle.main.url(
+        if let path             = Bundle.main.url(
             forResource: SoundKeys.sliceBombFuse,
             withExtension: ".caf")
         {
-            if let sound                                                        = try? AVAudioPlayer(contentsOf: path) { bombSoundEffect = sound; sound.play() }
+            if let sound = try? AVAudioPlayer(contentsOf: path) { bombSoundEffect = sound; sound.play() }
         }
         
-        if let emitter                                                          = SKEmitterNode(fileNamed: EmitterKeys.sliceFuse)
+        if let emitter          = SKEmitterNode(fileNamed: EmitterKeys.sliceFuse)
         {
-            emitter.position                                                    = CGPoint(x: 76, y: 64)
+            emitter.position = CGPoint(x: 76, y: 64)
             enemy.addChild(emitter)
         }
     }
@@ -191,41 +189,43 @@ class GameScene: SKScene
     
     func position(_ enemy: SKSpriteNode)
     {
-        let randomPosition                                                          = CGPoint(x: Int.random(in: 64...960), y: -128)
-        enemy.position                                                              = randomPosition
+        let randomPosition                      = CGPoint(x: Int.random(in: 64...960), y: -128)
+        enemy.position                          = randomPosition
         
-        let randomAngularVelocity                                                   = CGFloat.random(in: -3...3)
+        let randomAngularVelocity               = CGFloat.random(in: -3...3)
         let randomXVelocity: Int
         
         if randomPosition.x < 256 {
-            randomXVelocity                                                         = Int.random(in: 8...15)
+            randomXVelocity                     = Int.random(in: 8...15)
         } else if randomPosition.x < 512 {
-            randomXVelocity                                                         = Int.random(in: 3...5)
+            randomXVelocity                     = Int.random(in: 3...5)
         } else if randomPosition.x < 768 {
-            randomXVelocity                                                         = -Int.random(in: 3...5)
+            randomXVelocity                     = -Int.random(in: 3...5)
         } else {
-            randomXVelocity                                                         = -Int.random(in: 8...15)
+            randomXVelocity                     = -Int.random(in: 8...15)
         }
                 
-        let randomYVelocity                                                         = Int.random(in: 24...32)
+        let randomYVelocity                     = Int.random(in: 24...32)
                 
         if enemy.name == NameKeys.speedster {
-            enemy.physicsBody                                                       = SKPhysicsBody(circleOfRadius: 64)
-            enemy.physicsBody?.velocity                                             = CGVector(dx: randomXVelocity * 55, dy: randomYVelocity * 55)
-            enemy.physicsBody?.collisionBitMask                                     = 0
+            enemy.physicsBody                   = SKPhysicsBody(circleOfRadius: 64)
+            enemy.physicsBody?.velocity         = CGVector(dx: randomXVelocity * 55, dy: randomYVelocity * 55)
+            enemy.physicsBody?.collisionBitMask = 0
         } else {
-            enemy.physicsBody                                                       = SKPhysicsBody(circleOfRadius: 64)
-            enemy.physicsBody?.velocity                                             = CGVector(dx: randomXVelocity * 40, dy: randomYVelocity * 40)
-            enemy.physicsBody?.angularVelocity                                      = randomAngularVelocity
-            enemy.physicsBody?.collisionBitMask                                     = 0
+            enemy.physicsBody                   = SKPhysicsBody(circleOfRadius: 64)
+            enemy.physicsBody?.velocity         = CGVector(dx: randomXVelocity * 40, dy: randomYVelocity * 40)
+            enemy.physicsBody?.angularVelocity  = randomAngularVelocity
+            enemy.physicsBody?.collisionBitMask = 0
         }
     }
     
     
     func initiateSequence()
     {
-        sequence                = [.oneNoBomb, .oneNoBomb, .twoWithOneBomb, .twoWithOneBomb, .three, .one, .chain]
-        for _ in 0 ... 1000 { if let nextSequence = SequenceType.allCases.randomElement() { sequence.append(nextSequence) } }
+        sequence = [.oneNoBomb, .oneNoBomb, .twoWithOneBomb, .twoWithOneBomb, .three, .one, .chain]
+        for _ in 0 ... 1000 {
+            if let nextSequence = SequenceType.allCases.randomElement() { sequence.append(nextSequence) }
+        }
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in self?.tossEnemies() }
     }
     
@@ -286,12 +286,12 @@ class GameScene: SKScene
     
     func playSwooshSound()
     {
-        isSwooshSoundActive                                         = true
+        isSwooshSoundActive = true
         
-        let randomNumber                                            = Int.random(in: 1...3)
-        let soundName                                               = "swoosh\(randomNumber).caf"
+        let randomNumber    = Int.random(in: 1...3)
+        let soundName       = "swoosh\(randomNumber).caf"
         
-        let swooshSound                                             = SKAction.playSoundFileNamed(soundName, waitForCompletion: true)
+        let swooshSound     = SKAction.playSoundFileNamed(soundName, waitForCompletion: true)
         
         run(swooshSound) { [weak self] in self?.isSwooshSoundActive = false }
     }
@@ -354,33 +354,21 @@ class GameScene: SKScene
 extension GameScene {
     override func update(_ currentTime: TimeInterval)
     {
-        if activeEnemies.count > 0
-        {
-            for (index, node) in activeEnemies
-                .enumerated()
-                .reversed() { if node.position.y < -140 { obliterate(node: node, atIndex: index) } }
+        if activeEnemies.count > 0 { for (index, node) in activeEnemies.enumerated().reversed()
+            { if node.position.y < -140 { obliterate(node: node, atIndex: index) } }
         }
-        else
-        {
-            if !nextSequenceQueued {
-                DispatchQueue.main.asyncAfter(deadline: .now() + popupTime) { [weak self] in self?.tossEnemies() }
-                nextSequenceQueued  = true
-            }
+        else if !nextSequenceQueued {
+            DispatchQueue.main.asyncAfter(deadline: .now() + popupTime) { [weak self] in self?.tossEnemies() }
+            nextSequenceQueued  = true
         }
         
-        var bombCount               = 0
+        var bombCount = 0
         
         for node in activeEnemies {
-            if node.name == NameKeys.bombContainer {
-                bombCount += 1
-                break
-            }
+            if node.name == NameKeys.bombContainer { bombCount += 1; break }
         }
         
-        if bombCount == 0 {
-            bombSoundEffect?.stop()
-            bombSoundEffect         = nil
-        }
+        if bombCount == 0 { bombSoundEffect?.stop(); bombSoundEffect = nil }
     }
     
     
