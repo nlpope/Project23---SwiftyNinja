@@ -12,13 +12,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>101</string>
+					<string>99</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>100</string>
+					<string>98</string>
 					<key>Timestamp</key>
-					<string>753405873.405466</string>
+					<string>764350399.103714</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -59,13 +59,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>359</string>
+					<string>357</string>
 					<key>StartingColumnNumber</key>
-					<string>36</string>
+					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>358</string>
+					<string>356</string>
 					<key>Timestamp</key>
-					<string>764349512.8615561</string>
+					<string>764350399.103737</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -81,15 +81,16 @@
 			<key>text-context</key>
 			<dict>
 				<key>focused</key>
-				<string>for (index, node) in activeEnemies</string>
+				<string>        if activeEnemies.count &gt; 0 { for (index, node) in activeEnemies.enumerated().reversed()
+</string>
 				<key>leading</key>
 				<string>    override func update(_ currentTime: TimeInterval)
     {
-        if activeEnemies.count &gt; 0 { </string>
+</string>
 				<key>trailing</key>
-				<string>.enumerated().reversed()
-            { if node.position.y &lt; -140 { obliterate(node: node, atIndex: index) } }
+				<string>            { if node.position.y &lt; -140 { obliterate(node: node, atIndex: index) } }
         }
+        else if !nextSequenceQueued {
 </string>
 			</dict>
 			<key>title</key>
@@ -105,13 +106,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>99</string>
+					<string>97</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>98</string>
+					<string>96</string>
 					<key>Timestamp</key>
-					<string>753405873.407547</string>
+					<string>764350399.1036119</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -152,13 +153,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>81</string>
+					<string>79</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>80</string>
+					<string>78</string>
 					<key>Timestamp</key>
-					<string>753405873.407568</string>
+					<string>764350399.103573</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -199,13 +200,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>302</string>
+					<string>300</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>301</string>
+					<string>299</string>
 					<key>Timestamp</key>
-					<string>764349433.930352</string>
+					<string>764350399.103672</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -246,13 +247,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>310</string>
+					<string>308</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>309</string>
+					<string>307</string>
 					<key>Timestamp</key>
-					<string>764349433.930434</string>
+					<string>764350399.10344</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -293,13 +294,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>397</string>
+					<string>395</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>396</string>
+					<string>394</string>
 					<key>Timestamp</key>
-					<string>764349719.064906</string>
+					<string>764350399.103322</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -340,13 +341,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>377</string>
+					<string>375</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>376</string>
+					<string>374</string>
 					<key>Timestamp</key>
-					<string>764349719.064929</string>
+					<string>764350399.1034009</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -390,13 +391,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>130</string>
+					<string>128</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>129</string>
+					<string>127</string>
 					<key>Timestamp</key>
-					<string>753405873.407629</string>
+					<string>764350399.103649</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -437,13 +438,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>416</string>
+					<string>414</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>415</string>
+					<string>413</string>
 					<key>Timestamp</key>
-					<string>764349719.064798</string>
+					<string>764350399.103521</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -484,13 +485,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>417</string>
+					<string>415</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>416</string>
+					<string>414</string>
 					<key>Timestamp</key>
-					<string>764349719.064878</string>
+					<string>764350399.103694</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -531,13 +532,13 @@
 					<key>EndingColumnNumber</key>
 					<string>0</string>
 					<key>EndingLineNumber</key>
-					<string>228</string>
+					<string>226</string>
 					<key>StartingColumnNumber</key>
 					<string>0</string>
 					<key>StartingLineNumber</key>
-					<string>227</string>
+					<string>225</string>
 					<key>Timestamp</key>
-					<string>753737303.937759</string>
+					<string>764350399.103482</string>
 				</dict>
 				<key>rebasable-url</key>
 				<dict>
@@ -554,17 +555,15 @@
 			<dict>
 				<key>focused</key>
 				<string>        for _ in 0 ... 1000 {
-            if let nextSequence = SequenceType.allCases.randomElement() { sequence.append(nextSequence) }
-        }
 </string>
 				<key>leading</key>
 				<string>    {
         sequence = [.oneNoBomb, .oneNoBomb, .twoWithOneBomb, .twoWithOneBomb, .three, .one, .chain]
 </string>
 				<key>trailing</key>
-				<string>        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in self?.tossEnemies() }
-    }
-    
+				<string>            if let nextSequence = SequenceType.allCases.randomElement() { sequence.append(nextSequence) }
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in self?.tossEnemies() }
 </string>
 			</dict>
 			<key>title</key>
